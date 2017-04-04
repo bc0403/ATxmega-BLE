@@ -1,3 +1,4 @@
+/*
 # ATmega-BLE
 A simple demo for ATxmega256A3U + BLE communication.
 
@@ -30,3 +31,55 @@ A simple demo for ATxmega256A3U + BLE communication.
 4. http://maxembedded.com/2015/06/setting-up-avr-gcc-toolchain-on-linux-and-mac-os-x/ (avr-gcc + avrdude toolchain)
 5. http://microfluidics.utoronto.ca/gitlab/dstat/dstat-firmware (ATxmega256A3U board)
 6. https://morf.lv/guide-to-xmega-usart-aka-serial-communication
+*/
+
+//------ usartC0 interrupt mode test code
+// in baud rate setting, using cpu-2MHz
+#include <avr/io.h>
+#include <avr/interrupt.h>
+#include "usartC0.h"
+
+volatile unsigned char c;
+
+ISR(USARTC0_RXC_vect)
+{
+	  c = usartRx();
+    usartTx(c);
+}
+
+int main (void)
+{
+		usartInit();
+    usartFlush();
+    usartInterruptInit();
+
+    while (1){
+      ;
+		}
+
+    return 0;
+}
+//------ end
+
+/*
+//------ usartC0 polling mode test code
+//in baud setting, using cpu-2MHz
+#include <avr/io.h>
+#include "usartC0.h"
+
+volatile unsigned char c;
+
+int main (void)
+{
+
+    usartInit();
+
+    while (1){
+       c = usartRx();
+       usartTx(c);
+		}
+
+    return 0;
+}
+//------ end
+*/
