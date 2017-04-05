@@ -19,13 +19,13 @@ static int usart_putchar (char c, FILE *stream)
     return 0;
 }
 
-static char usart_getchar(FILE *stream)
+static int usart_getchar(FILE *stream)
 {
     while( !(USARTC0_STATUS & USART_RXCIF_bm) ); //Wait until data has been received.
     char data = USARTC0_DATA; //Temporarly store received data
-    if(data == '\r')
-        data = '\n';
-    usart_putchar(data, stream); //Send to console what has been received, so we can see when typing
+    // if(data == '\r')
+    //     data = '\n';
+    // usart_putchar(data, stream); //Send to console what has been received, so we can see when typing
     return data;
 }
 // ---
@@ -63,6 +63,7 @@ void usartInit (void)
 
   // --- using usart as stdio, step 3/3: initialize ---
   stdout = &usartio;
+  stdin = &usartio;
   // ---
 }
 

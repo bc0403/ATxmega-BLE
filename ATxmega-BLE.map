@@ -48,8 +48,12 @@ Archive member included to satisfy reference by file (symbol)
                               /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libprintf_flt.a(vfprintf_flt.o) (fputc)
 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(iob.o)
                               ./src/usartC0.o (__iob)
+/usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(printf.o)
+                              ./src/main.o (printf)
 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(puts.o)
                               ./src/main.o (puts)
+/usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(scanf.o)
+                              ./src/main.o (scanf)
 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(ungetc.o)
                               /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libscanf_flt.a(vfscanf_flt.o) (ungetc)
 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(ultoa_invert.o)
@@ -76,12 +80,16 @@ Discarded input sections
  .text          0x0000000000000000        0x0 ./src/main.o
  .data          0x0000000000000000        0x0 ./src/main.o
  .bss           0x0000000000000000        0x0 ./src/main.o
+ COMMON         0x0000000000000000        0x1 ./src/main.o
  .text          0x0000000000000000        0x0 ./src/usartC0.o
  .data          0x0000000000000000        0x0 ./src/usartC0.o
  .bss           0x0000000000000000        0x0 ./src/usartC0.o
+ .text.usartInterruptInit
+                0x0000000000000000       0x18 ./src/usartC0.o
  .text.usartTx  0x0000000000000000        0xe ./src/usartC0.o
  .text.usartTxString
                 0x0000000000000000       0x18 ./src/usartC0.o
+ .text.usartRx  0x0000000000000000        0xe ./src/usartC0.o
  .text.setUp32MHzInternalOsc
                 0x0000000000000000       0x1e ./src/usartC0.o
  .text          0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/avrxmega6/libgcc.a(_exit.o)
@@ -189,9 +197,15 @@ Discarded input sections
  .text          0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(iob.o)
  .data          0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(iob.o)
  .bss           0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(iob.o)
+ .text          0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(printf.o)
+ .data          0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(printf.o)
+ .bss           0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(printf.o)
  .text          0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(puts.o)
  .data          0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(puts.o)
  .bss           0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(puts.o)
+ .text          0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(scanf.o)
+ .data          0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(scanf.o)
+ .bss           0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(scanf.o)
  .text          0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(ungetc.o)
  .data          0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(ungetc.o)
  .bss           0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(ungetc.o)
@@ -317,7 +331,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x0000000000000000     0x19ec
+.text           0x0000000000000000     0x19ee
  *(.vectors)
  .vectors       0x0000000000000000      0x1fc /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/crtatxmega256a3u.o
                 0x0000000000000000                __vectors
@@ -423,6 +437,7 @@ END GROUP
                 0x000000000000038c                __vector_30
                 0x000000000000038c                __vector_73
                 0x000000000000038c                __vector_45
+                0x000000000000038c                __vector_25
                 0x000000000000038c                __vector_93
                 0x000000000000038c                __vector_61
                 0x000000000000038c                __vector_11
@@ -512,103 +527,101 @@ END GROUP
  .text.avr-libc
                 0x0000000000000acc      0x800 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libscanf_flt.a(vfscanf_flt.o)
                 0x0000000000001072                vfscanf
- .text.__vector_25
-                0x00000000000012cc       0x58 ./src/main.o
-                0x00000000000012cc                __vector_25
  .text.startup.main
-                0x0000000000001324        0x8 ./src/main.o
-                0x0000000000001324                main
+                0x00000000000012cc       0x46 ./src/main.o
+                0x00000000000012cc                main
  .text.usart_putchar
-                0x000000000000132c       0x20 ./src/usartC0.o
+                0x0000000000001312       0x20 ./src/usartC0.o
  .text.usart_getchar
-                0x000000000000134c       0x20 ./src/usartC0.o
+                0x0000000000001332       0x10 ./src/usartC0.o
  .text.usartInit
-                0x000000000000136c       0x30 ./src/usartC0.o
-                0x000000000000136c                usartInit
- .text.usartInterruptInit
-                0x000000000000139c       0x18 ./src/usartC0.o
-                0x000000000000139c                usartInterruptInit
- .text.usartRx  0x00000000000013b4        0xe ./src/usartC0.o
-                0x00000000000013b4                usartRx
+                0x0000000000001342       0x34 ./src/usartC0.o
+                0x0000000000001342                usartInit
  .text.usartFlush
-                0x00000000000013c2        0xe ./src/usartC0.o
-                0x00000000000013c2                usartFlush
+                0x0000000000001376        0xe ./src/usartC0.o
+                0x0000000000001376                usartFlush
  .text.avr-libc.fplib
-                0x00000000000013d0       0x7a /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libm.a(floatsisf.o)
-                0x00000000000013d0                __floatunsisf
-                0x00000000000013d4                __floatsisf
+                0x0000000000001384       0x7a /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libm.a(floatsisf.o)
+                0x0000000000001384                __floatunsisf
+                0x0000000000001388                __floatsisf
  .text.avr-libc.fplib
-                0x000000000000144a        0x4 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libm.a(mulsf3.o)
-                0x000000000000144a                __mulsf3
+                0x00000000000013fe        0x4 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libm.a(mulsf3.o)
+                0x00000000000013fe                __mulsf3
  .text.avr-libc.fplib
-                0x000000000000144e       0xc2 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libm.a(mulsf3x.o)
-                0x0000000000001462                __mulsf3x
-                0x0000000000001466                __mulsf3_pse
+                0x0000000000001402       0xc2 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libm.a(mulsf3x.o)
+                0x0000000000001416                __mulsf3x
+                0x000000000000141a                __mulsf3_pse
  .text.avr-libc.fplib
-                0x0000000000001510        0xc /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libm.a(fp_inf.o)
-                0x0000000000001510                __fp_inf
+                0x00000000000014c4        0xc /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libm.a(fp_inf.o)
+                0x00000000000014c4                __fp_inf
  .text.avr-libc.fplib
-                0x000000000000151c        0x6 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libm.a(fp_nan.o)
-                0x000000000000151c                __fp_nan
+                0x00000000000014d0        0x6 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libm.a(fp_nan.o)
+                0x00000000000014d0                __fp_nan
  .text.avr-libc.fplib
-                0x0000000000001522        0xe /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libm.a(fp_pscA.o)
-                0x0000000000001522                __fp_pscA
+                0x00000000000014d6        0xe /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libm.a(fp_pscA.o)
+                0x00000000000014d6                __fp_pscA
  .text.avr-libc.fplib
-                0x0000000000001530        0xe /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libm.a(fp_pscB.o)
-                0x0000000000001530                __fp_pscB
+                0x00000000000014e4        0xe /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libm.a(fp_pscB.o)
+                0x00000000000014e4                __fp_pscB
  .text.avr-libc.fplib
-                0x000000000000153e       0x22 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libm.a(fp_round.o)
-                0x000000000000153e                __fp_round
+                0x00000000000014f2       0x22 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libm.a(fp_round.o)
+                0x00000000000014f2                __fp_round
  .text.avr-libc.fplib
-                0x0000000000001560       0x44 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libm.a(fp_split3.o)
-                0x0000000000001560                __fp_split3
-                0x0000000000001570                __fp_splitA
+                0x0000000000001514       0x44 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libm.a(fp_split3.o)
+                0x0000000000001514                __fp_split3
+                0x0000000000001524                __fp_splitA
  .text.avr-libc.fplib
-                0x00000000000015a4        0xe /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libm.a(fp_zero.o)
-                0x00000000000015a4                __fp_zero
-                0x00000000000015a6                __fp_szero
+                0x0000000000001558        0xe /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libm.a(fp_zero.o)
+                0x0000000000001558                __fp_zero
+                0x000000000000155a                __fp_szero
  .text.avr-libc
-                0x00000000000015b2      0x1b0 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(ftoa_engine.o)
-                0x00000000000015b2                __ftoa_engine
+                0x0000000000001566      0x1b0 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(ftoa_engine.o)
+                0x0000000000001566                __ftoa_engine
  .text.avr-libc
-                0x0000000000001762       0x10 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(isspace.o)
-                0x0000000000001762                isspace
+                0x0000000000001716       0x10 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(isspace.o)
+                0x0000000000001716                isspace
  .text.avr-libc
-                0x0000000000001772       0x10 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(tolower.o)
-                0x0000000000001772                tolower
+                0x0000000000001726       0x10 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(tolower.o)
+                0x0000000000001726                tolower
  .text.avr-libc
-                0x0000000000001782       0x16 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(strchr_P.o)
-                0x0000000000001782                strchr_P
+                0x0000000000001736       0x16 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(strchr_P.o)
+                0x0000000000001736                strchr_P
  .text.avr-libc
-                0x0000000000001798       0x16 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(strnlen_P.o)
-                0x0000000000001798                strnlen_P
+                0x000000000000174c       0x16 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(strnlen_P.o)
+                0x000000000000174c                strnlen_P
  .text.avr-libc
-                0x00000000000017ae       0x16 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(strnlen.o)
-                0x00000000000017ae                strnlen
+                0x0000000000001762       0x16 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(strnlen.o)
+                0x0000000000001762                strnlen
  .text.avr-libc
-                0x00000000000017c4       0x78 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(fgetc.o)
-                0x00000000000017c4                fgetc
+                0x0000000000001778       0x78 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(fgetc.o)
+                0x0000000000001778                fgetc
  .text.avr-libc
-                0x000000000000183c       0x60 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(fputc.o)
-                0x000000000000183c                fputc
+                0x00000000000017f0       0x60 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(fputc.o)
+                0x00000000000017f0                fputc
  .text.avr-libc
-                0x000000000000189c       0x58 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(puts.o)
-                0x000000000000189c                puts
+                0x0000000000001850       0x28 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(printf.o)
+                0x0000000000001850                printf
  .text.avr-libc
-                0x00000000000018f4       0x32 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(ungetc.o)
-                0x00000000000018f4                ungetc
+                0x0000000000001878       0x58 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(puts.o)
+                0x0000000000001878                puts
  .text.avr-libc
-                0x0000000000001926       0xbc /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(ultoa_invert.o)
-                0x0000000000001926                __ultoa_invert
+                0x00000000000018d0       0x26 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(scanf.o)
+                0x00000000000018d0                scanf
  .text.avr-libc
-                0x00000000000019e2        0x6 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(cty_isfalse.o)
-                0x00000000000019e2                __ctype_isfalse
-                0x00000000000019e6                __ctype_istrue
-                0x00000000000019e8                . = ALIGN (0x2)
+                0x00000000000018f6       0x32 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(ungetc.o)
+                0x00000000000018f6                ungetc
+ .text.avr-libc
+                0x0000000000001928       0xbc /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(ultoa_invert.o)
+                0x0000000000001928                __ultoa_invert
+ .text.avr-libc
+                0x00000000000019e4        0x6 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(cty_isfalse.o)
+                0x00000000000019e4                __ctype_isfalse
+                0x00000000000019e8                __ctype_istrue
+                0x00000000000019ea                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000000000019e8        0x0 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/avrxmega6/libgcc.a(_exit.o)
-                0x00000000000019e8                exit
-                0x00000000000019e8                _exit
+ .fini9         0x00000000000019ea        0x0 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/avrxmega6/libgcc.a(_exit.o)
+                0x00000000000019ea                exit
+                0x00000000000019ea                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -627,11 +640,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000000000019e8        0x4 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/avrxmega6/libgcc.a(_exit.o)
+ .fini0         0x00000000000019ea        0x4 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/avrxmega6/libgcc.a(_exit.o)
  *(.fini0)
-                0x00000000000019ec                _etext = .
+                0x00000000000019ee                _etext = .
 
-.data           0x0000000000802000       0x1c load address 0x00000000000019ec
+.data           0x0000000000802000       0x20 load address 0x00000000000019ee
                 0x0000000000802000                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -639,33 +652,31 @@ END GROUP
                 0x0000000000802000                usartio
  *(.rodata)
  *(.rodata*)
- .rodata.__vector_25.str1.1
-                0x000000000080200e        0xd ./src/main.o
+ .rodata.main.str1.1
+                0x000000000080200e       0x11 ./src/main.o
  *(.gnu.linkonce.d*)
-                0x000000000080201c                . = ALIGN (0x2)
- *fill*         0x000000000080201b        0x1 
-                0x000000000080201c                _edata = .
-                0x000000000080201c                PROVIDE (__data_end, .)
+                0x0000000000802020                . = ALIGN (0x2)
+ *fill*         0x000000000080201f        0x1 
+                0x0000000000802020                _edata = .
+                0x0000000000802020                PROVIDE (__data_end, .)
 
-.bss            0x000000000080201c        0x7
-                0x000000000080201c                PROVIDE (__bss_start, .)
+.bss            0x0000000000802020        0x6
+                0x0000000000802020                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
  *(COMMON)
- COMMON         0x000000000080201c        0x1 ./src/main.o
-                0x000000000080201c                c
- COMMON         0x000000000080201d        0x6 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(iob.o)
-                0x000000000080201d                __iob
-                0x0000000000802023                PROVIDE (__bss_end, .)
-                0x00000000000019ec                __data_load_start = LOADADDR (.data)
-                0x0000000000001a08                __data_load_end = (__data_load_start + SIZEOF (.data))
+ COMMON         0x0000000000802020        0x6 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(iob.o)
+                0x0000000000802020                __iob
+                0x0000000000802026                PROVIDE (__bss_end, .)
+                0x00000000000019ee                __data_load_start = LOADADDR (.data)
+                0x0000000000001a0e                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x0000000000802023        0x0
-                0x0000000000802023                PROVIDE (__noinit_start, .)
+.noinit         0x0000000000802026        0x0
+                0x0000000000802026                PROVIDE (__noinit_start, .)
  *(.noinit*)
-                0x0000000000802023                PROVIDE (__noinit_end, .)
-                0x0000000000802023                _end = .
-                0x0000000000802023                PROVIDE (__heap_start, .)
+                0x0000000000802026                PROVIDE (__noinit_end, .)
+                0x0000000000802026                _end = .
+                0x0000000000802026                PROVIDE (__heap_start, .)
 
 .eeprom         0x0000000000810000        0x0
  *(.eeprom*)
@@ -717,7 +728,9 @@ END GROUP
  .comment       0x0000000000000011       0x12 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(fgetc.o)
  .comment       0x0000000000000011       0x12 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(fputc.o)
  .comment       0x0000000000000011       0x12 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(iob.o)
+ .comment       0x0000000000000011       0x12 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(printf.o)
  .comment       0x0000000000000011       0x12 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(puts.o)
+ .comment       0x0000000000000011       0x12 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(scanf.o)
  .comment       0x0000000000000011       0x12 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(ungetc.o)
 
 .note.gnu.avr.deviceinfo
@@ -740,51 +753,51 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x0000000000000000       0x88
+.debug_aranges  0x0000000000000000       0x80
  *(.debug_aranges)
  .debug_aranges
-                0x0000000000000000       0x28 ./src/main.o
+                0x0000000000000000       0x20 ./src/main.o
  .debug_aranges
-                0x0000000000000028       0x60 ./src/usartC0.o
+                0x0000000000000020       0x60 ./src/usartC0.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x0000000000000000     0x3cd4
+.debug_info     0x0000000000000000     0x3cae
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x0000000000000000     0x3409 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/crtatxmega256a3u.o
- .debug_info    0x0000000000003409      0x225 ./src/main.o
- .debug_info    0x000000000000362e      0x6a6 ./src/usartC0.o
+ .debug_info    0x0000000000003409      0x21c ./src/main.o
+ .debug_info    0x0000000000003625      0x689 ./src/usartC0.o
 
-.debug_abbrev   0x0000000000000000     0x34cd
+.debug_abbrev   0x0000000000000000     0x34d6
  *(.debug_abbrev)
  .debug_abbrev  0x0000000000000000     0x3148 /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/crtatxmega256a3u.o
- .debug_abbrev  0x0000000000003148      0x15c ./src/main.o
- .debug_abbrev  0x00000000000032a4      0x229 ./src/usartC0.o
+ .debug_abbrev  0x0000000000003148      0x165 ./src/main.o
+ .debug_abbrev  0x00000000000032ad      0x229 ./src/usartC0.o
 
-.debug_line     0x0000000000000000      0x320
+.debug_line     0x0000000000000000      0x318
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x0000000000000000       0x1d /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/crtatxmega256a3u.o
- .debug_line    0x000000000000001d       0xcd ./src/main.o
- .debug_line    0x00000000000000ea      0x236 ./src/usartC0.o
+ .debug_line    0x000000000000001d       0xd1 ./src/main.o
+ .debug_line    0x00000000000000ee      0x22a ./src/usartC0.o
 
-.debug_frame    0x0000000000000000      0x13c
+.debug_frame    0x0000000000000000       0xec
  *(.debug_frame)
- .debug_frame   0x0000000000000000       0x7c ./src/main.o
- .debug_frame   0x000000000000007c       0xc0 ./src/usartC0.o
+ .debug_frame   0x0000000000000000       0x34 ./src/main.o
+ .debug_frame   0x0000000000000034       0xb8 ./src/usartC0.o
 
-.debug_str      0x0000000000000000     0x2712
+.debug_str      0x0000000000000000     0x2713
  *(.debug_str)
  .debug_str     0x0000000000000000     0x223b /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/crtatxmega256a3u.o
- .debug_str     0x000000000000223b      0x18e ./src/main.o
-                                        0x1cc (size before relaxing)
- .debug_str     0x00000000000023c9      0x349 ./src/usartC0.o
+ .debug_str     0x000000000000223b      0x174 ./src/main.o
+                                        0x1b2 (size before relaxing)
+ .debug_str     0x00000000000023af      0x364 ./src/usartC0.o
                                         0x4fb (size before relaxing)
 
-.debug_loc      0x0000000000000000      0x228
+.debug_loc      0x0000000000000000      0x12f
  *(.debug_loc)
- .debug_loc     0x0000000000000000       0xcb ./src/main.o
- .debug_loc     0x00000000000000cb      0x15d ./src/usartC0.o
+ .debug_loc     0x0000000000000000       0x48 ./src/main.o
+ .debug_loc     0x0000000000000048       0xe7 ./src/usartC0.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -804,10 +817,10 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x0000000000000000       0x68
+.debug_ranges   0x0000000000000000       0x60
  *(.debug_ranges)
- .debug_ranges  0x0000000000000000       0x18 ./src/main.o
- .debug_ranges  0x0000000000000018       0x50 ./src/usartC0.o
+ .debug_ranges  0x0000000000000000       0x10 ./src/main.o
+ .debug_ranges  0x0000000000000010       0x50 ./src/usartC0.o
 
 .debug_macro
  *(.debug_macro)
@@ -856,7 +869,9 @@ __ftoa_engine                                     /usr/local/Cellar/avr-gcc/6.2.
 __heap_end                                        /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/crtatxmega256a3u.o
 __init                                            /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/crtatxmega256a3u.o
 __iob                                             /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(iob.o)
+                                                  /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(scanf.o)
                                                   /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(puts.o)
+                                                  /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(printf.o)
                                                   ./src/usartC0.o
 __mulsf3                                          /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libm.a(mulsf3.o)
                                                   /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libscanf_flt.a(vfscanf_flt.o)
@@ -910,8 +925,7 @@ __vector_21                                       /usr/local/Cellar/avr-gcc/6.2.
 __vector_22                                       /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/crtatxmega256a3u.o
 __vector_23                                       /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/crtatxmega256a3u.o
 __vector_24                                       /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/crtatxmega256a3u.o
-__vector_25                                       ./src/main.o
-                                                  /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/crtatxmega256a3u.o
+__vector_25                                       /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/crtatxmega256a3u.o
 __vector_26                                       /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/crtatxmega256a3u.o
 __vector_27                                       /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/crtatxmega256a3u.o
 __vector_28                                       /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/crtatxmega256a3u.o
@@ -1007,7 +1021,11 @@ isspace                                           /usr/local/Cellar/avr-gcc/6.2.
                                                   /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libscanf_flt.a(vfscanf_flt.o)
 main                                              ./src/main.o
                                                   /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/crtatxmega256a3u.o
+printf                                            /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(printf.o)
+                                                  ./src/main.o
 puts                                              /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(puts.o)
+                                                  ./src/main.o
+scanf                                             /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(scanf.o)
                                                   ./src/main.o
 setUp32MHzInternalOsc                             ./src/usartC0.o
 strchr_P                                          /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(strchr_P.o)
@@ -1025,11 +1043,11 @@ usartFlush                                        ./src/usartC0.o
 usartInit                                         ./src/usartC0.o
                                                   ./src/main.o
 usartInterruptInit                                ./src/usartC0.o
-                                                  ./src/main.o
 usartRx                                           ./src/usartC0.o
-                                                  ./src/main.o
 usartTx                                           ./src/usartC0.o
 usartTxString                                     ./src/usartC0.o
 usartio                                           ./src/usartC0.o
 vfprintf                                          /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libprintf_flt.a(vfprintf_flt.o)
+                                                  /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(printf.o)
 vfscanf                                           /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libscanf_flt.a(vfscanf_flt.o)
+                                                  /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/../../../../avr/lib/avrxmega6/libc.a(scanf.o)

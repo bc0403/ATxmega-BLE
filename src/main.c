@@ -42,21 +42,24 @@ A simple demo for ATxmega256A3U + BLE communication.
 
 volatile unsigned char c;
 
-ISR(USARTC0_RXC_vect)
-{
-	  c = usartRx();
-    //usartTx(c);
-		printf("hello world!\n");
-}
+// ISR(USARTC0_RXC_vect)
+// {
+// 	  c = usartRx();
+//     //usartTx(c);
+// 		printf("hello world!\n");
+// }
 
 int main (void)
 {
 		usartInit();
     usartFlush();
-    usartInterruptInit();
+    // usartInterruptInit();
+    printf("Welcome!\n");
+		char a='A';
 
     while (1){
-      ;
+			scanf("%c", &a);
+			printf("\n%c\n", a);
 		}
 
     return 0;
