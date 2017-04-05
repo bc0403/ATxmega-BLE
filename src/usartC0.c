@@ -1,9 +1,38 @@
 // ---
 
 #include <avr/io.h>
+#include <stdio.h>
 #include <avr/interrupt.h>
 #include "usartC0.h"
+// --- using usart as stdio, step 1/3: define two functions ---
+static int usart_putchar (char c, FILE *stream)
+{
+    if (c == '\n')
+    usart_putchar('\r', stream);
 
+    // Wait for the transmit buffer to be empty
+    while (  !(USARTC0_STATUS & USART_DREIF_bm) );
+
+    // Put our character into the transmit buffer
+    USARTC0_DATA = c;
+
+    return 0;
+}
+
+static char usart_getchar(FILE *stream)
+{
+    while( !(USARTC0_STATUS & USART_RXCIF_bm) ); //Wait until data has been received.
+    char data = USARTC0_DATA; //Temporarly store received data
+    if(data == '\r')
+        data = '\n';
+    usart_putchar(data, stream); //Send to console what has been received, so we can see when typing
+    return data;
+}
+// ---
+
+// --- using usart as stdio, step 2/3: define IO ---
+FILE usartio = FDEV_SETUP_STREAM(usart_putchar, usart_getchar, _FDEV_SETUP_RW);
+// ---
 
 void usartInit (void)
 {
@@ -31,6 +60,10 @@ void usartInit (void)
   // USARTC0.CTRLB = USART_TXEN_bm;
   //Enable receive and transmit
   USARTC0_CTRLB = USART_TXEN_bm | USART_RXEN_bm;
+
+  // --- using usart as stdio, step 3/3: initialize ---
+  stdout = &usartio;
+  // ---
 }
 
 
@@ -55,6 +88,14 @@ void usartTx(unsigned char c)
 {
     while( !(USARTC0_STATUS & USART_DREIF_bm) ); //Wait until DATA buffer is empty
     USARTC0_DATA = c;
+}
+
+void usartTxString(unsigned char *c)
+{
+  while(*c)
+    {
+        usartTx(*c++);
+    }
 }
 
 unsigned char usartRx(void)

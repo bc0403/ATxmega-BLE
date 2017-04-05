@@ -37,6 +37,7 @@ A simple demo for ATxmega256A3U + BLE communication.
 // in baud rate setting, using cpu-2MHz
 #include <avr/io.h>
 #include <avr/interrupt.h>
+#include <stdio.h>
 #include "usartC0.h"
 
 volatile unsigned char c;
@@ -44,7 +45,8 @@ volatile unsigned char c;
 ISR(USARTC0_RXC_vect)
 {
 	  c = usartRx();
-    usartTx(c);
+    //usartTx(c);
+		printf("hello world!\n");
 }
 
 int main (void)

@@ -12,6 +12,9 @@ src/main.o: src/main.c \
  /usr/local/Cellar/avr-gcc/6.2.0/avr/include/avr/fuse.h \
  /usr/local/Cellar/avr-gcc/6.2.0/avr/include/avr/lock.h \
  /usr/local/Cellar/avr-gcc/6.2.0/avr/include/avr/interrupt.h \
+ /usr/local/Cellar/avr-gcc/6.2.0/avr/include/stdio.h \
+ /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/include/stdarg.h \
+ /usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/include/stddef.h \
  src/usartC0.h
 
 /usr/local/Cellar/avr-gcc/6.2.0/avr/include/avr/io.h:
@@ -39,5 +42,11 @@ src/main.o: src/main.c \
 /usr/local/Cellar/avr-gcc/6.2.0/avr/include/avr/lock.h:
 
 /usr/local/Cellar/avr-gcc/6.2.0/avr/include/avr/interrupt.h:
+
+/usr/local/Cellar/avr-gcc/6.2.0/avr/include/stdio.h:
+
+/usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/include/stdarg.h:
+
+/usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/include/stddef.h:
 
 src/usartC0.h:

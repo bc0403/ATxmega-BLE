@@ -1,6 +1,10 @@
 # ATmega-BLE
 A simple demo for ATxmega256A3U + BLE communication.
 
+## Versions:
+- V0.2 (April 5, 2017), added usart as stdio;
+- V0.1 (April 4, 2017), draft Version;
+
 ## Features:
 - BLE debug app on mobile phone send a character to Arduino, and the Arduino return it back;
 
@@ -29,4 +33,5 @@ A simple demo for ATxmega256A3U + BLE communication.
 3. http://learn.linksprite.com/arduino/shields/how-to-use-ble4-0-shield/ (BLE module)
 4. http://maxembedded.com/2015/06/setting-up-avr-gcc-toolchain-on-linux-and-mac-os-x/ (avr-gcc + avrdude toolchain)
 5. http://microfluidics.utoronto.ca/gitlab/dstat/dstat-firmware (ATxmega256A3U board)
-6. https://morf.lv/guide-to-xmega-usart-aka-serial-communication
+6. https://morf.lv/guide-to-xmega-usart-aka-serial-communication (ATxmega usart usage)
+7. http://www.voidcn.com/blog/lengyuegg/article/p-858330.html (usart as stdio)
